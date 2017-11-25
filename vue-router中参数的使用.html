@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<router-view></router-view>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    var router = new VueRouter({
+        routes :[
+            {
+                name : 'login',
+                path : '/login',
+                component : {
+                    template : '<h1>登录页,获取到的id为{{id}}</h1>',
+                    data(){
+                        return{
+                            id : 0
+                        }
+                    },
+                    created(){
+                        //在路由中，是通过 ?key=value的形式进行参数传递的
+                        //那么我们可以在this.$route.query对象获取到参数中传递的内容
+                        this.id = this.$route.query.id;
+                    }
+                }
+            }
+        ]
+    })
+    let vm = new Vue({
+        router,
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

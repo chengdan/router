@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .router-link-active{
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--<a href="#/">首页</a>-->
+    <!--<a href="zxscA#/login">登录页</a>-->
+    <!--<a href="#/register">注册页</a>-->
+
+    <!--<router-link to="/index">首页</router-link>-->
+    <!--<router-link to="/login">登录页</router-link>-->
+    <!--<router-link to="/register">注册页</router-link>-->
+
+    <router-link :to="{name : 'home'}">首页</router-link>
+    <router-link :to="{name : 'login'}">登录页</router-link>
+    <router-link :to="{name : 'register'}">注册页</router-link>
+
+<router-view></router-view>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+
+
+    var router = new VueRouter({
+        routes :[
+            {
+                name : 'home',
+                path : '/index/436',
+                component :{
+                    template : "<h1>首页</h1>"
+                }
+            },
+            {
+                name : 'login',
+                path : '/login/wqe/234',
+                component : {
+                    template : "<h1>登录页</h1>"
+                }
+            },
+            {
+                name : 'register',
+                path : '/register',
+                component :{
+                    template : "<h1>注册页</h1>"
+                }
+            }
+        ]
+    })
+    let vm = new Vue({
+        router,
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

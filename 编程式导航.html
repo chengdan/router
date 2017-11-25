@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="btn">点我到列表页</button>
+    <router-view></router-view>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+
+    var router = new VueRouter({
+        routes :[
+            {
+                name : 'home',
+                path : '/index',
+                component : {
+                    template : '<h1>首页</h1>'
+                }
+            },
+            {
+                name : 'login',
+                path : '/login',
+                component : {
+                    template : '<h1>登录页</h1>'
+                }
+            },
+            {
+                name : 'list',
+                path : '/list',
+                component : {
+                    template : '<h1>列表页</h1>'
+                }
+            }
+        ]
+    });
+
+    //加上导航守卫后，页面是不会被跳转的
+    router.beforeEach((to,from,next)=>{
+        console.log('要跳转了，但是被我拦住了')
+    })
+
+    let vm = new Vue({
+        router,
+        el:'#app',
+        data:{
+
+        },
+        methods :{
+            btn(){
+                alert('保存数据成功了，要跳转了');
+                this.$router.push('/list?id='+1);
+            }
+        }
+    })
+</script>
+</body>
+</html>
